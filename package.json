@@ -1,0 +1,14 @@
+{
+  "name": "persistent-undo",
+  "main": "./lib/persistent-undo",
+  "version": "0.0.0",
+  "description": "Stores undo/redo history information in the user's ~/.atom folder",
+  "keywords": ["persistent","undo","save","redo","history"],
+  "repository": "https://github.com/benwbooth/atom-persistent-undo",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}
