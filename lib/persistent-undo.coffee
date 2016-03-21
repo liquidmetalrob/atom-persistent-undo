@@ -23,16 +23,16 @@ module.exports = PersistentUndo =
           gzipped = zlib.gzipSync(json)
           fs.writeFile(undoFilePath, gzipped)
 
-        if editor.buffer?.file?.path?
-          undoFolder = atom.config.get('persistent-undo.undoFolder')
-          undoFilePath = path.join(atom.getConfigDirPath(), undoFolder, editor.buffer.file.path)
-          if fs.existsSync(undoFilePath)
-            fs.readFile undoFilePath, (error, data) ->
-              throw error if error?
-              gunzipped = zlib.gunzipSync(data).toString('utf8')
-              state = JSON.parse(gunzipped)
-              if state?
-                editor.buffer.history.deserialize(state)
+      if editor.buffer?.file?.path?
+        undoFolder = atom.config.get('persistent-undo.undoFolder')
+        undoFilePath = path.join(atom.getConfigDirPath(), undoFolder, editor.buffer.file.path)
+        if fs.existsSync(undoFilePath)
+          fs.readFile undoFilePath, (error, data) ->
+            throw error if error?
+            gunzipped = zlib.gunzipSync(data).toString('utf8')
+            state = JSON.parse(gunzipped)
+            if state?
+              editor.buffer.history.deserialize(state)
 
   deactivate: ->
 
