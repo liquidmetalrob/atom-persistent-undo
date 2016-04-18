@@ -19,7 +19,7 @@ module.exports = PersistentUndo =
           undoFilePath = path.join(atom.getConfigDirPath(), undoFolder, editor.buffer.file.path)
           if !fs.existsSync(path.dirname(undoFilePath))
             @mkdirParent path.dirname(undoFilePath), 0x1ed
-          json = JSON.stringify(editor.buffer.history.serialize())
+          json = JSON.stringify(editor.buffer.history.serialize({}))
           gzipped = zlib.gzipSync(json)
           fs.writeFile(undoFilePath, gzipped)
 
