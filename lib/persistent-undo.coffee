@@ -21,7 +21,7 @@ module.exports = PersistentUndo =
             @mkdirParent path.dirname(undoFilePath), 0x1ed
           json = JSON.stringify(editor.buffer.historyProvider.serialize({}))
           gzipped = zlib.gzipSync(json)
-          fs.writeFile(undoFilePath, gzipped)
+          fs.writeFileSync(undoFilePath, gzipped)
 
       if editor.buffer?.file?.path?
         undoFolder = atom.config.get('persistent-undo.undoFolder')
